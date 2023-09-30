@@ -52,6 +52,7 @@ class AlarmReceiver : BroadcastReceiver() {
 
         notificationCompatBuilder.let {
             Log.d(it.toString(),it.toString())
+
             // 작은 아이콘 설정
             it.setSmallIcon(android.R.drawable.ic_notification_overlay)
             // 시간 설정

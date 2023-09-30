@@ -5,8 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.random_music_alarm.databinding.FragmentFirstBinding
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
 class FirstFragment : Fragment() {
@@ -20,8 +22,12 @@ class FirstFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
+        val navController = findNavController()
         _binding = FragmentFirstBinding.inflate(inflater, container, false)
+
+        binding.fab.setOnClickListener { view ->
+            navController.navigate(R.id.action_FirstFragment_to_CreateAlarm)
+        }
         return binding.root
 
     }
@@ -30,7 +36,8 @@ class FirstFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.buttonFirst.setOnClickListener {
-            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+            findNavController().navigate(R.id.action_FirstFragment_to_CreateAlarm)
+            (activity as MainActivity).findViewById<FloatingActionButton>(R.id.fab).show()
         }
     }
 

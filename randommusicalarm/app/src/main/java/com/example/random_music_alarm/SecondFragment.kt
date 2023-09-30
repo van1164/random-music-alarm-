@@ -14,8 +14,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import android.widget.Toolbar
 import androidx.navigation.fragment.findNavController
 import com.example.random_music_alarm.databinding.FragmentSecondBinding
+import com.google.android.material.appbar.MaterialToolbar
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
@@ -32,7 +35,7 @@ class SecondFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
+        (activity as MainActivity).findViewById<MaterialToolbar>(R.id.toolbar).setTitle(R.string.create_alarm)
         _binding = FragmentSecondBinding.inflate(inflater, container, false)
         return binding.root
 
@@ -43,7 +46,7 @@ class SecondFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.buttonSecond.setOnClickListener {
-            findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
+            findNavController().navigate(R.id.action_CreateAlarm_to_FirstFragment)
         }
 
 
@@ -52,7 +55,6 @@ class SecondFragment : Fragment() {
         binding.setAlarmButton.setOnClickListener {
             val hour = timePicker.hour
             val minute = timePicker.minute
-            Log.d("SDFSDF","sdfsdf")
             val calendar = Calendar.getInstance()
             calendar.set(Calendar.HOUR_OF_DAY, hour)
             calendar.set(Calendar.MINUTE, minute)
